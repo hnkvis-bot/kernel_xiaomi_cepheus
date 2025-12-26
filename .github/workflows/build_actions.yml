@@ -1,0 +1,43 @@
+name: Kernel Build
+
+on:
+  push:
+    branches:
+      - "*"
+    tags:
+      - "*"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout repo
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      # Install dependencies
+      - name: Install toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            bc bison flex libssl-dev make git zip \
+            clang llvm lld gcc-aarch64-linux-gnu
+
+      # Make script executable
+      - name: Make build script executable
+        run: chmod +x ./build_actions.sh
+
+      # Run your build script
+      - name: Build kernel
+        run: ./build_actions.sh
+
+      # Upload final kernel zip (placed in repo root by your script)
+      - name: Upload kernel zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: kernel-zip
+          path: "*.zip"
