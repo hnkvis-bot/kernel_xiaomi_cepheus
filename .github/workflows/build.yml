@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Init submodules
-        run: git submodule update --init --recursive
+        run: git submodule update --init --recursive || true
       - name: Install toolchain 
         run: | 
           sudo apt install -y bc bison flex libssl-dev make git zip clang llvm lld
