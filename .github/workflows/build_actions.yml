@@ -1,4 +1,4 @@
-name: Kernel Build
+name: build_actions
 
 on:
   push:
