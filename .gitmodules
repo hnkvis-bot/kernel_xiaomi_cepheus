@@ -1,3 +1,7 @@
-[submodule "KernelSU"]
-	path = KernelSU
-	url = https://github.com/tiann/KernelSU.git
+#[submodule "KernelSU"]
+#	path = KernelSU
+#	url = https://github.com/tiann/KernelSU.git
+[submodule "KernelSu-Next"]
+	path = KernelSu-Next
+	url = https://github.com/KernelSU-Next/KernelSU-Next
+	branch = stable
