@@ -29,6 +29,7 @@ export CROSS_COMPILE=aarch64-linux-gnu-
 # CLEAN + DEFCONFIG
 # -----------------------------
 echo ">>> Running defconfig"
+rm -rf out && mkdir out
 make O=out $KERNEL_DEFCONFIG
 
 START=$(date +"%s")
