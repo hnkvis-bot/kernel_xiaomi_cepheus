@@ -17,6 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          clean: true
           submodules: recursive
 
       # Install dependencies
@@ -30,6 +31,7 @@ jobs:
 
       # Run your build script
       - name: Build kernel
+        working-directory: ${{ github.workspace }}
         run: ./build_actions.sh
 
       # Upload final kernel zip (placed in repo root by your script)
