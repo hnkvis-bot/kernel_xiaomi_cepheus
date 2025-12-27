@@ -1,6 +1,8 @@
 #!/bin/bash
 set -ex
-cd "$(git rev-parse --show-toplevel)"
+KERNEL_ROOT=$(dirname "$(find . -maxdepth 2 -name Makefile | grep -v 'arch/' | head -n 1)")
+cd "$KERNEL_ROOT"
+echo ">>> Using kernel root: $PWD"
 
 # -----------------------------
 # CONFIG
@@ -30,8 +32,7 @@ export CROSS_COMPILE=aarch64-linux-gnu-
 # -----------------------------
 echo ">>> Running defconfig"
 rm -rf out && mkdir out
-echo ">>> Contents of out AFTER mkdir:"
-ls -al out
+make ARCH=arm64 O=out mrproper
 make ARCH=arm64 O=out $KERNEL_DEFCONFIG
 
 START=$(date +"%s")
