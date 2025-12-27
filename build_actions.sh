@@ -1,5 +1,6 @@
 #!/bin/bash
 set -ex
+cd "$(dirname "$0")"
 
 # -----------------------------
 # CONFIG
@@ -8,7 +9,6 @@ TIMESTAMP=$(date +"%Y%m%d_%H%M")
 KERNEL_DEFCONFIG=cepheus_defconfig
 ANYKERNEL3_DIR=$PWD/AnyKernel3
 FINAL_KERNEL_ZIP="InfiniR_cepheus_v1.39_HNKSUN-${TIMESTAMP}.zip"
-echo "PWD = $PWD"
 
 # -----------------------------
 # TOOLCHAIN (system LLVM/Clang)
@@ -30,7 +30,7 @@ export CROSS_COMPILE=aarch64-linux-gnu-
 # -----------------------------
 echo ">>> Running defconfig"
 rm -rf out && mkdir out
-make O=out $KERNEL_DEFCONFIG
+make ARCH=arm64 O=out $KERNEL_DEFCONFIG
 
 START=$(date +"%s")
 
