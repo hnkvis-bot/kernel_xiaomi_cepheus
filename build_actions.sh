@@ -4,9 +4,10 @@ set -e
 # -----------------------------
 # CONFIG
 # -----------------------------
+TIMESTAMP=$(date +"%Y%m%d_%H%M")
 KERNEL_DEFCONFIG=cepheus_defconfig
 ANYKERNEL3_DIR=$PWD/AnyKernel3
-FINAL_KERNEL_ZIP=InfiniR_cepheus_v1.39_KSUN.zip
+FINAL_KERNEL_ZIP="InfiniR_cepheus_v1.39_HNKSUN-${TIMESTAMP}.zip"
 
 # -----------------------------
 # TOOLCHAIN (system LLVM/Clang)
