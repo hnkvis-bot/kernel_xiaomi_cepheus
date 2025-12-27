@@ -41,7 +41,6 @@ export CROSS_COMPILE=aarch64-linux-gnu-
 # -----------------------------
 echo ">>> Running defconfig"
 rm -rf out && mkdir out
-make ARCH=arm64 O=out mrproper
 make ARCH=arm64 O=out $KERNEL_DEFCONFIG
 
 START=$(date +"%s")
