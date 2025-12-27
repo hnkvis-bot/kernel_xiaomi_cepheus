@@ -1,6 +1,6 @@
 #!/bin/bash
 set -ex
-cd "$(dirname "$0")"
+cd "$(git rev-parse --show-toplevel)"
 
 # -----------------------------
 # CONFIG
