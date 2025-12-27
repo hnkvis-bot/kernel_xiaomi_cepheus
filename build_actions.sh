@@ -1,7 +1,16 @@
 #!/bin/bash
 set -ex
-KERNEL_ROOT=$(dirname "$(find . -maxdepth 2 -name Makefile | grep -v 'arch/' | head -n 1)")
-cd "$KERNEL_ROOT"
+
+# Force script to run from the directory where THIS script lives
+cd "$(dirname "$0")"
+
+# Verify that the top-level kernel Makefile exists here
+if [ ! -f Makefile ] || [ ! -d arch ]; then
+    echo "ERROR: This directory does not contain the kernel source tree."
+    echo "Expected to find Makefile and arch/ here."
+    exit 1
+fi
+
 echo ">>> Using kernel root: $PWD"
 
 # -----------------------------
