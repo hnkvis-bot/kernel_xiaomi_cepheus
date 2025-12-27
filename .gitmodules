@@ -4,4 +4,4 @@
 [submodule "KernelSu-Next"]
 	path = KernelSU-Next
 	url = https://github.com/KernelSU-Next/KernelSU-Next
-	branch = stable
+	branch = legacy
