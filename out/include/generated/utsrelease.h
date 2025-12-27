@@ -1,1 +1,0 @@
-#define UTS_RELEASE "4.14.324-InfiniR_cepheus_A12-A13_v1.10-ge53d5a9f8a58-dirty"
