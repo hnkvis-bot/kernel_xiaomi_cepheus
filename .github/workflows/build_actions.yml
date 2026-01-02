@@ -25,17 +25,17 @@ jobs:
         run: |
           sudo apt install -y bc bison flex libssl-dev make git zip llvm lld gcc-aarch64-linux-gnu
 
-  - name: Download Clang 12.0.7
-    run: | 
-      mkdir -p $GITHUB_WORKSPACE/clang
-      cd $GITHUB_WORKSPACE/clang
-      wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/tags/android-12.0.0_r1/clang-r416183b.tar.gz -O clang.tar.gz
-      tar -xf clang.tar.gz 
+      - name: Download Clang 12.0.7
+        run: | 
+          mkdir -p $GITHUB_WORKSPACE/clang
+          cd $GITHUB_WORKSPACE/clang
+          wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/tags/android-12.0.0_r1/clang-r416183b.tar.gz -O clang.tar.gz
+          tar -xf clang.tar.gz 
 
-  - name: Export Clang 12.0.7
-    run: | 
-      echo "PATH=$GITHUB_WORKSPACE/clang/bin:$PATH" >> $GITHUB_ENV
-      echo "CLANG_PATH=$GITHUB_WORKSPACE/clang" >> $GITHUB_ENV
+      - name: Export Clang 12.0.7
+        run: | 
+          echo "PATH=$GITHUB_WORKSPACE/clang/bin:$PATH" >> $GITHUB_ENV
+          echo "CLANG_PATH=$GITHUB_WORKSPACE/clang" >> $GITHUB_ENV
       
       # Make script executable
       - name: Make build script executable
